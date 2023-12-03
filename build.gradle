@@ -11,14 +11,6 @@ java {
 	sourceCompatibility = '20'
 }
 
-/*bootJar {
-	enabled = false
-}
-
-jar {
-	enabled = true
-}*/
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -27,13 +19,11 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
 }
 
-/*ext {
+ext {
 	set('springCloudAzureVersion', "5.7.0")
-	set('springShellVersion', "3.2.0-RC1")
-}*/
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
@@ -41,23 +31,20 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	//implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+	implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
 	implementation 'org.springframework.session:spring-session-core'
-	//implementation 'org.springframework.shell:spring-shell-starter'
 	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 }
 
-/*dependencyManagement {
+dependencyManagement {
 	imports {
-		mavenBom "org.springframework.shell:spring-shell-dependencies:${springShellVersion}"
 		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
 	}
-}*/
+}
 
 tasks.named('test') {
 	useJUnitPlatform()
